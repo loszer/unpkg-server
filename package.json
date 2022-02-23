@@ -16,6 +16,7 @@
     "clean": "git clean -e '!/.env' -fdX .",
     "lint": "eslint modules",
     "serve": "nodemon -w server.js server.js",
+    "serve:with-registry": "export PORT=18090 NPM_REGISTRY_URL=http://localhost:4873 ORIGIN=null  && npm run serve",
     "test": "jest",
     "watch": "rollup -c -w"
   },

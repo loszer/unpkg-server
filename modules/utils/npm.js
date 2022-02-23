@@ -1,5 +1,6 @@
 import url from 'url';
-import https from 'https';
+// import https from 'https';
+import http from 'http';
 import gunzip from 'gunzip-maybe';
 import LRUCache from 'lru-cache';
 
@@ -8,6 +9,7 @@ import bufferStream from './bufferStream.js';
 const npmRegistryURL =
   process.env.NPM_REGISTRY_URL || 'https://registry.npmjs.org';
 
+let https = http
 const agent = new https.Agent({
   keepAlive: true
 });
@@ -26,6 +28,7 @@ const notFound = '';
 
 function get(options) {
   return new Promise((accept, reject) => {
+    // console.log('debug:' + JSON.stringify(options, null ,4))
     https.get(options, accept).on('error', reject);
   });
 }
